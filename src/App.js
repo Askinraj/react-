@@ -2,7 +2,8 @@
 import { Route,Routes,Link} from "react-router-dom";
 import Home from "./Home";
 import Post from "./Post";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { VscAdd } from "react-icons/vsc";
 function App() {
   const [name,setName]=useState('');
   const names=['clinton','jerome','churchil'];
@@ -10,6 +11,7 @@ function App() {
   const namesChange = ()=>{
     setName(names[num]);
   }
+  const ref =useRef();
   return (
     <div >
 <Routes>
@@ -20,6 +22,9 @@ function App() {
   <p><Link to="/post/1">Post one to view</Link></p>
   <p><Link to="/post/2">Post two to view</Link></p>
   <p onClick={namesChange}>hi every on my name is {name}</p>
+<label htmlFor="na">Enter the name</label>
+  <input id="na" ref={ref} placeholder="enter the name "/>
+  <VscAdd onClick={()=>ref.current.focus()}/>
     </div>
   );
 }
